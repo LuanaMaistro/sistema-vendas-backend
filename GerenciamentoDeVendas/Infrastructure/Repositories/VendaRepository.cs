@@ -26,6 +26,7 @@ namespace Infrastructure.Repositories
         {
             return await _dbSet
                 .Include(v => v.Itens)
+                .OrderByDescending(v => v.Numero)
                 .ToListAsync();
         }
 
@@ -34,6 +35,7 @@ namespace Infrastructure.Repositories
             return await _dbSet
                 .Include(v => v.Itens)
                 .Where(v => v.ClienteId == clienteId)
+                .OrderByDescending(v => v.Numero)
                 .ToListAsync();
         }
 
@@ -42,6 +44,7 @@ namespace Infrastructure.Repositories
             return await _dbSet
                 .Include(v => v.Itens)
                 .Where(v => v.Status == status)
+                .OrderByDescending(v => v.Numero)
                 .ToListAsync();
         }
 
@@ -50,6 +53,7 @@ namespace Infrastructure.Repositories
             return await _dbSet
                 .Include(v => v.Itens)
                 .Where(v => v.DataVenda >= dataInicio && v.DataVenda <= dataFim)
+                .OrderByDescending(v => v.Numero)
                 .ToListAsync();
         }
 
